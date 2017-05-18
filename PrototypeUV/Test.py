@@ -36,15 +36,15 @@ def findCorona(image):
     # Create a detector with the parameters
     detector = cv2.SimpleBlobDetector_create(params)
 
-    imgGray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    imgGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     img2 = cv2.bilateralFilter(imgGray, 15, 75, 75)
 
-    keypoints = detector.detect(imgGray)
+    keypoints = detector.detect(img2)
     return keypoints
 
 
 # Read image
-im = cv2.imread('images/corona-2.jpg')
+im = cv2.imread('images/corona-6.jpg')
 
 # Detect blobs.
 keypoints = findCorona(im)

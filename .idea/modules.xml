@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SIAD.iml" filepath="$PROJECT_DIR$/.idea/SIAD.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SIAD2.iml" filepath="$PROJECT_DIR$/.idea/SIAD2.iml" />
     </modules>
   </component>

@@ -1,24 +1,7 @@
-'''
+# import the necessary packages
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-
-img = cv2.imread('images/corona-1.jpg', 0)
-
-crop_img = img[120:90, 140:120]
-
-
-plt.subplot(221), plt.imshow(img, 'gray')
-plt.subplot(222), plt.hist(img.ravel(),256,[0,256])
-plt.subplot(223), plt.imshow(crop_img, 'gray')
-plt.subplot(224), plt.hist(crop_img.ravel(),256,[0,256])
-
-plt.show()
-'''
-
-# import the necessary packages
-import argparse
-import cv2
 
 # initialize the list of reference points and boolean indicating
 # whether cropping is being performed or not
@@ -64,17 +47,9 @@ def click_and_crop(event, x, y, flags, param):
         cv2.rectangle(image, refPt[0], refPt[1], (0, 255, 0), 2)
         cv2.imshow("image", image)
 
-'''
-# construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required=True, help="Path to the image")
-args = vars(ap.parse_args())
-
-# load the image, clone it, and setup the mouse callback function
-image = cv2.imread(args["image"])
-'''
-image = cv2.imread('images/corona-1.jpg', 0)
+image = cv2.imread('images/corona-2.jpg')
 clone = image.copy()
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 cv2.namedWindow("image")
 cv2.setMouseCallback("image", click_and_crop)
 
@@ -92,12 +67,17 @@ while True:
     elif key == ord("c"):
         break
 
+# close all open windows
+cv2.destroyAllWindows()
 # if there are two reference points, then crop the region of interest
 # from teh image and display it
 if len(refPt) == 2:
-    roi = clone[refPt[0][1]:refPt[1][1], refPt[0][0]:refPt[1][0]]
+    roi = gray[refPt[0][1]:refPt[1][1], refPt[0][0]:refPt[1][0]]
     cv2.imshow("ROI", roi)
-    cv2.waitKey(0)
 
-# close all open windows
-cv2.destroyAllWindows()
+    plt.subplot(221), plt.imshow(roi, 'gray')
+    plt.subplot(222), plt.hist(roi.ravel(),256,[0,256])
+    plt.subplot(223), plt.imshow(roi, 'gray')
+    plt.subplot(224), plt.hist(roi.ravel(),256,[0,256])
+
+    plt.show()

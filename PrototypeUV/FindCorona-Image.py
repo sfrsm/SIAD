@@ -16,7 +16,7 @@ def findCorona(image):
     # Filter by Area.
     params.filterByArea = True
     params.minArea = 20
-    # params.maxArea = 3000
+    #params.maxArea = 200
 
     params.filterByColor = True
     params.blobColor = 255
@@ -31,7 +31,7 @@ def findCorona(image):
 
     # Filter by Inertia
     params.filterByInertia = False
-    params.minInertiaRatio = 0.01
+    params.minInertiaRatio = 0.2
 
     # Create a detector with the parameters
     detector = cv2.SimpleBlobDetector_create(params)
@@ -44,7 +44,7 @@ def findCorona(image):
 
 
 # Read image
-im = cv2.imread('images/corona-6.jpg')
+im = cv2.imread('images/corona-13.jpg')
 
 # Detect blobs.
 keypoints = findCorona(im)

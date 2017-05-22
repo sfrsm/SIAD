@@ -45,7 +45,7 @@ def findCorona(image):
 
 # Read image
 #im = cv2.imread('images/corona-6.jpg')
-cap = cv2.VideoCapture('videos/corona-1.mp4')
+cap = cv2.VideoCapture('videos/corona-2.mp4')
 
 frameCount = 0
 

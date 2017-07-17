@@ -22,8 +22,8 @@ def findCorona(image):
     params.blobColor = 255
 
     # Filter by Circularity
-    params.filterByCircularity = False
-    params.minCircularity = 0.1
+    params.filterByCircularity = True
+    params.minCircularity = 0.5
 
     # Filter by Convexity
     params.filterByConvexity = False
@@ -44,7 +44,7 @@ def findCorona(image):
 
 
 # Read image
-im = cv2.imread('images/corona-13.jpg')
+im = cv2.imread('images/corona-1.jpg')
 
 # Detect blobs.
 keypoints = findCorona(im)

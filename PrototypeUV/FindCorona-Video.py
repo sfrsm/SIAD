@@ -22,8 +22,8 @@ def findCorona(image):
     params.blobColor = 255
 
     # Filter by Circularity
-    params.filterByCircularity = False
-    params.minCircularity = 0.1
+    params.filterByCircularity = True
+    params.minCircularity = 0.5
 
     # Filter by Convexity
     params.filterByConvexity = False
@@ -45,7 +45,7 @@ def findCorona(image):
 
 # Read image
 #im = cv2.imread('images/corona-6.jpg')
-cap = cv2.VideoCapture('videos/corona-2.mp4')
+cap = cv2.VideoCapture('videos/corona-1.mp4')
 
 frameCount = 0
 
